@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Table = ({ users }) => {
   if (users) {
@@ -10,7 +11,9 @@ const Table = ({ users }) => {
                 <td>
                   <img src={user._links.avatar.href} alt=""/>
                 </td>
-                <td>{user.first_name}{user.last_name}</td>
+                <td>
+                  <Link to={`/users/${user.id}/`}>{user.first_name}{user.last_name}</Link>
+                </td>
                 <td>{user.phone}</td>
                 <td>{user.email}</td>
                 <td>{user.website}</td>

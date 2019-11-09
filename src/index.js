@@ -14,6 +14,7 @@ render(
     <Router>
       <Switch>
         <Route exact path='/' component={App} />
+        <Route path='/page/:page/' component={App} />
       </Switch>
     </Router>
   </Provider>,

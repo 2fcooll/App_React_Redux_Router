@@ -20,9 +20,10 @@ const Table = ({ users }) => {
             )
           )}
         </tbody>
-      </table>  
+      </table>
     );
-  } 
+  }
+  return null;
 };
 
 export default Table;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsers } from '../actions';
 import Table from '../components/Table.jsx';
+import Pagination from '../components/Pagination.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -14,10 +15,11 @@ class App extends Component {
 
   render() {
     const { users } = this.props;
-    
+    console.log(this.props, 'props');
     return (
       <div>
         <Table users = { users } />
+        <Pagination users = { users } />
       </div>
     );
   }

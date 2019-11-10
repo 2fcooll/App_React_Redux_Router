@@ -17,7 +17,9 @@ const Table = ({ users }) => {
                 <td>{user.phone}</td>
                 <td>{user.email}</td>
                 <td>{user.website}</td>
-                <td>&#x270E;</td>
+                <td>
+                  <Link to={`/users/${user.id}/edit/`}>&#x270E;</Link>
+                </td>
                 <td>&#x2715;</td>
               </tr>
             )

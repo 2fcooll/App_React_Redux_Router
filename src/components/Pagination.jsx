@@ -7,7 +7,7 @@ const Pagination = ({ users }) => {
     return (
       <div>
         <ul>
-          {[...Array(users.length / ITEMS_PER_PAGE)].map((e, i) => (
+          {[...Array(Math.ceil(users.length / ITEMS_PER_PAGE))].map((e, i) => (
             <li key={i}>
               <Link to={`/page/${i+1}/`}>{i+1}</Link>
             </li>

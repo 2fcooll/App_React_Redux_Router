@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editUser } from '../actions';
-import EditForm from '../components/EditForm.jsx';
+import { sendUserData } from '../actions';
+import UserForm from '../components/UserForm.jsx';
 
-class EditFormContainer extends Component {
+class FormContainer extends Component {
   constructor() {
     super();
 
@@ -13,24 +13,24 @@ class EditFormContainer extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { match: { params: { id } }, history } = this.props;
-    const { editUser } = this.props;
+    const { sendUserData } = this.props;
     const data = [...e.target].reduce((result, input) => {
       if (input.type === 'text' && input.value) {
         result[input.name] = input.value;
       }
       return result;
     }, {});
-    editUser(data, id);
+    sendUserData(data, id);
     history.goBack();
   }
 
   render() {
     return (
       <div>
-        <EditForm handleSubmit = {this.handleSubmit } />
+        <UserForm handleSubmit = {this.handleSubmit } />
       </div>
     );
   }
 }
 
-export default connect(state => state, { editUser })(EditFormContainer);
+export default connect(state => state, { sendUserData })(FormContainer);

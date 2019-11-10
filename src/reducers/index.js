@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_USERS, GET_USER } from '../actions';
+import { GET_USERS, GET_USER, EDIT_USER } from '../actions';
 
 const initialState = {
   users: [],
@@ -7,12 +7,19 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  let oldUsers;
+
   switch(action.type) {
     case GET_USERS: {
       return Object.assign({}, state, { users: action.users });
     }
     case GET_USER: {
       return Object.assign({}, state, { user: action.user })
+    }
+    case EDIT_USER: {
+      oldUsers = [...state.users];
+      oldUsers.splice(oldUsers.findIndex(e => e.id === action.user.id), 1, action.user);
+      return Object.assign({}, state, { users: oldUsers });
     }
     default: {
       return state;

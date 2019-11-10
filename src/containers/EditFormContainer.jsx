@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { editUser } from '../actions';
+import EditForm from '../components/EditForm.jsx';
 
-export default class EditFormContainer extends Component {
+class EditFormContainer extends Component {
+  constructor() {
+    super();
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const { match: { params: { id } } } = this.props;
+    const { editUser } = this.props;
+    const data = [...e.target].reduce((result, input) => {
+      if (input.type === 'text' && input.value) {
+        result[input.name] = input.value;
+      }
+      return result;
+    }, {});
+
+    editUser(data, id);
   }
 
   render() {
-    const { match: { params: { id } } } = this.props;
-
     return (
       <div>
-        <form onSubmit = { this.handleSubmit }>
-          <input type='text' name='first_name' placeholder='First name' />
-          <input type='text' name='last_name' placeholder='Last name' />
-          <input type='text' name='phone' placeholder='Phone' />
-          <input type='text' name='email' placeholder='Email' />
-          <input type='text' name='website' placeholder='Website' />
-          <input type='submit' value='Submit' />
-        </form>
+        <EditForm handleSubmit = {this.handleSubmit } />
       </div>
     );
   }
 }
+
+export default connect(state => state, { editUser })(EditFormContainer);

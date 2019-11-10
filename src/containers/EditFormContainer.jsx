@@ -12,7 +12,7 @@ class EditFormContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } }, history } = this.props;
     const { editUser } = this.props;
     const data = [...e.target].reduce((result, input) => {
       if (input.type === 'text' && input.value) {
@@ -20,8 +20,8 @@ class EditFormContainer extends Component {
       }
       return result;
     }, {});
-
     editUser(data, id);
+    history.goBack();
   }
 
   render() {

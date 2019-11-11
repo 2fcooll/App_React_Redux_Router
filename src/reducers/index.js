@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { GET_USERS, GET_USER, EDIT_USER, ADD_USER } from '../actions';
+import { GET_USERS, GET_USER, EDIT_USER, ADD_USER, TOGGLE_NOTIFICATION } from '../actions';
 
 const initialState = {
+  notification: '',
   users: [],
   user: {}
 };
@@ -25,6 +26,9 @@ const reducer = (state = initialState, action) => {
       oldUsers = [...state.users];
       oldUsers.unshift(action.user);
       return Object.assign({}, state, { users: oldUsers });
+    }
+    case TOGGLE_NOTIFICATION: {
+      return Object.assign({}, state, { notification: action.message });
     }
     default: {
       return state;

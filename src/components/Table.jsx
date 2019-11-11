@@ -5,6 +5,17 @@ const Table = ({ users }) => {
   if (users) {
     return (
       <table className='table'>
+        <thead>
+          <tr>
+            <td>
+              <Link to='/users/new/'>
+                <button className='addButton'>
+                  Добавить
+                </button>
+              </Link>
+            </td>
+          </tr>
+        </thead>
         <tbody>
           {users.map(user => (
               <tr key={user.id} className='table__row'>

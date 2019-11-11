@@ -112,9 +112,29 @@ body {
   position: absolute;
   right: 100px;
   top: 50px;
-  background: #444;
+  background: #FF6347;
   color: #fff;
   box-shadow: 0 10px 10px #E0E0E0;
   padding: 20px 30px 20px 30px;
   border-radius: 10px;
+}
+
+.profile {
+  width: 600px;
+  height: auto;
+  margin: auto;
+  display: flex;;
+}
+
+.profile__image {
+  border-radius: 10px;
+}
+
+.profile__list {
+  margin: 0;
+}
+
+.profile__list-item {
+  list-style-type: none;
+  padding: 20px;
 }

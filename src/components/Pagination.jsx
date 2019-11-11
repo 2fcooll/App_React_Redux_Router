@@ -5,12 +5,14 @@ import { ITEMS_PER_PAGE } from '../helpers';
 const Pagination = ({ users }) => {
   if (users) {
     return (
-      <div>
-        <ul>
+      <div className='pagination'>
+        <ul className='pagination__list'>
           {[...Array(Math.ceil(users.length / ITEMS_PER_PAGE))].map((e, i) => (
-            <li key={i}>
-              <Link to={`/page/${i+1}/`}>{i+1}</Link>
-            </li>
+            <Link to={`/page/${i+1}/`}>
+              <li key={i} className='pagination__list-item'>
+                {i+1}
+              </li>
+            </Link>
             )
           )}
         </ul>

@@ -4,23 +4,22 @@ import { Link } from 'react-router-dom';
 const Table = ({ users }) => {
   if (users) {
     return (
-      <table>
+      <table className='table'>
         <tbody>
           {users.map(user => (
-              <tr key={user.id}>
-                <td>
-                  <img src={user._links.avatar.href} alt=""/>
+              <tr key={user.id} className='table__row'>
+                <td className='table__cell'>
+                  <img className='image' src={user._links.avatar.href} alt=""/>
                 </td>
-                <td>
+                <td className='table__cell'>
                   <Link to={`/users/${user.id}/`}>{user.first_name}{user.last_name}</Link>
                 </td>
-                <td>{user.phone}</td>
-                <td>{user.email}</td>
-                <td>{user.website}</td>
-                <td>
+                <td className='table__cell'>{user.phone}</td>
+                <td className='table__cell'>{user.email}</td>
+                <td className='table__cell'>{user.website}</td>
+                <td className='table__cell'>
                   <Link to={`/users/${user.id}/edit/`}>&#x270E;</Link>
                 </td>
-                <td>&#x2715;</td>
               </tr>
             )
           )}
